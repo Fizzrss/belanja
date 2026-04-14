@@ -12,16 +12,18 @@ class ItemPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Shopping List'),
       ),
-      body: SingleChildScrollView( // Mencegah error overflow jika layar kecil
+      body: SingleChildScrollView( 
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Menampilkan Foto Produk
-            Image.network(
-              itemArgs.image,
-              width: double.infinity,
-              height: 300,
-              fit: BoxFit.cover,
+            Hero(
+              tag: itemArgs.name,
+              child: Image.network(
+                itemArgs.image,
+                width: double.infinity,
+                height: 300,
+                fit: BoxFit.cover,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),

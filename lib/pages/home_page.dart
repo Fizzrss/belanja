@@ -41,10 +41,13 @@ class HomePage extends StatelessWidget {
                     Expanded(
                       child: ClipRRect(
                         borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
-                        child: Image.network(
-                          item.image,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
+                        child: Hero(
+                          tag: item.name,
+                          child: Image.network(
+                            item.image,
+                            width: double.infinity,
+                            fit: BoxFit.cover, 
+                          ),
                         ),
                       ),
                     ),
