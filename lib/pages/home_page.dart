@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:belanja/models/item.dart';
 
 class HomePage extends StatelessWidget {
@@ -30,7 +31,7 @@ class HomePage extends StatelessWidget {
             final item = items[index];
             return InkWell(
               onTap: () {
-                Navigator.pushNamed(context, '/item', arguments: item);
+                context.push('/item', extra: item);
               },
               borderRadius: BorderRadius.circular(15),
               child: Card(
@@ -47,7 +48,7 @@ class HomePage extends StatelessWidget {
                         borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
                         child: Hero(
                           tag: item.name,
-                          child: Image.network(
+                          child: Image.asset(
                             item.image,
                             width: double.infinity,
                             fit: BoxFit.cover,

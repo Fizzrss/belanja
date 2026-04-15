@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:belanja/models/item.dart';
 
 class ItemPage extends StatelessWidget {
-  const ItemPage({super.key});
+  final Item item;
+
+  const ItemPage({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
-    final itemArgs = ModalRoute.of(context)!.settings.arguments as Item;
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -21,9 +21,9 @@ class ItemPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Hero(
-              tag: itemArgs.name,
-              child: Image.network(
-                itemArgs.image,
+              tag: item.name,
+              child: Image.asset(
+                item.image,
                 width: double.infinity,
                 height: 350,
                 fit: BoxFit.cover,
@@ -43,7 +43,7 @@ class ItemPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        itemArgs.name,
+                        item.name,
                         style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                       ),
                       Row(
@@ -51,7 +51,7 @@ class ItemPage extends StatelessWidget {
                           const Icon(Icons.star, color: Colors.amber, size: 28),
                           const SizedBox(width: 4),
                           Text(
-                            itemArgs.rating.toString(),
+                            item.rating.toString(),
                             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -60,7 +60,7 @@ class ItemPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'Rp ${itemArgs.price}',
+                    'Rp ${item.price}',
                     style: const TextStyle(fontSize: 24, color: Colors.deepOrange, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 15),
@@ -71,7 +71,7 @@ class ItemPage extends StatelessWidget {
                       const Icon(Icons.inventory_2_outlined, color: Colors.grey),
                       const SizedBox(width: 8),
                       Text(
-                        'Stok Tersedia: ${itemArgs.stock}',
+                        'Stok Tersedia: ${item.stock}',
                         style: const TextStyle(fontSize: 16, color: Colors.black87),
                       ),
                     ],
